@@ -14,7 +14,6 @@ jobs:
       tag: "v1"
       context: "."
         
-      
   push:
     needs: build
     uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-push-ACR.yml@main
