@@ -7,7 +7,7 @@ on:
       - main      
 jobs:
   build:
-    uses: samalaajaykiran/reusable-workflow-templates-repo/.github/workflows/docker-build.yml@main
+    uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-build.yml@main
     with:
       dockerfile: "Dockerfile"
       image-name: "pythonchatapp"
@@ -16,7 +16,7 @@ jobs:
         
   push:
     needs: build
-    uses: samalaajaykiran/reusable-workflow-templates-repo/.github/workflows/docker-push-ACR.yml@main
+    uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-push-ACR.yml@main
     with:
       image-name: "pythonchatapp"
       acr-login-server: ${{ vars.ACR_LOGIN_SERVER }}
@@ -29,7 +29,7 @@ jobs:
       
   deploy:
     needs: push
-    uses: samalaajaykiran/reusable-workflow-templates-repo/.github/workflows/deploy-app-service.yml@main
+    uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/deploy-app-service.yml@main
     with:
       app-name: "python-chat-app-service"
       ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}
