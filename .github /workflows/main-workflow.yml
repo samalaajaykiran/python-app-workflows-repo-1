@@ -4,10 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
-      
-      
-      
+      - main      
 jobs:
   build:
     uses: samalaajaykiran/reusable-workflow-templates-repo/.github/workflows/docker-build.yml@main
@@ -16,26 +13,19 @@ jobs:
       image-name: "pythonchatapp"
       tag: "v1"
       context: "."
-  
-      
-      
+        
   push:
     needs: build
     uses: samalaajaykiran/reusable-workflow-templates-repo/.github/workflows/docker-push-ACR.yml@main
     with:
       image-name: "pythonchatapp"
+      ‎acr-login-server: "pythonchatappl.azurecr.io"
       tag: "v1"
-      ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}
-      acr-name: "pythonchatappl"
-      acr-location: "southindia"
-      app-name: "python-chat-app-service"
-      runtime: "PYTHON:3.11"
-      acr-login-server: "pythonchatappl.azurecr.io"   
+      ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}   
     secrets:
-      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       ACR_USERNAME: ${{ secrets.ACR_USERNAME }}  
       ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
-      
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       
   deploy:
     needs: push
@@ -45,8 +35,5 @@ jobs:
       ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}
       image-name: "pythonchatapp"
       acr-login-server: ${{ vars.ACR_LOGIN_SERVER }}
-      tag: "v1"
-      runtime: "PYTHON:3.10"
-      acr-location: "southindia"
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}  
