@@ -28,6 +28,7 @@ jobs:
       ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       
+      
   deploy:
     needs: push
     uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/deploy-app-service.yml@main
