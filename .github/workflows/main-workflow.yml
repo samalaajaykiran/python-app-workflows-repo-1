@@ -20,12 +20,12 @@ jobs:
     uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-push-ACR.yml@main
     with:
       image-name: "pythonchatapp"
-      login-server: ${{ vars.ACR_LOGIN_SERVER }}
+      ACR_LOGIN_SERVER: ${{ vars.ACR_LOGIN_SERVER }}
       tag: "v1"
       ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}   
     secrets:
-      username: ${{ secrets.ACR_USERNAME }}  
-      password: ${{ secrets.ACR_PASSWORD }}
+      ACR_USERNAME: ${{ secrets.ACR_USERNAME }}  
+      ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       
   deploy:
