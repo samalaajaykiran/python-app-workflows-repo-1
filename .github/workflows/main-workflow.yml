@@ -26,6 +26,6 @@ jobs:
       app-name: "python-chat-app-service"
       ResourceGroup: ${{ vars.AZURE_RESOURCEGROUP }}
       image-name: "pythonchatapp"
-      acr-login-server: ${{ vars.ACR_LOGIN_SERVER }}
+      ACR_LOGIN_SERVER: ${{ vars.ACR_LOGIN_SERVER }}
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}  
