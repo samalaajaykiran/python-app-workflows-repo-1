@@ -7,7 +7,7 @@ on:
       - main      
 jobs:
   build-push:
-    uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-build.yml@main
+    uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-build-push-ACR.yml@main
     with:
       dockerfile: "Dockerfile"
       image-name: "pythonchatapp"
