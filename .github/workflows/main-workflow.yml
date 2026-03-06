@@ -6,7 +6,7 @@ on:
     branches:
       - main      
 jobs:
-  build-push:
+  build-push-ACR:
     uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/docker-build-push-ACR.yml@main
     with:
       dockerfile: "Dockerfile"
@@ -20,7 +20,7 @@ jobs:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         
   deploy:
-    needs: build-push
+    needs: build-push-ACR
     uses: samalaajaykiran/reusable-workflow-templates-repo-1/.github/workflows/deploy-app-service.yml@main
     with:
       app-name: "python-chat-app-service"
