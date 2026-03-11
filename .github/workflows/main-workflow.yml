@@ -1,5 +1,4 @@
 name: Docker Build, Push, and Deploy
-
 on:
   workflow_dispatch:
   push:
